@@ -16,6 +16,4 @@
 # Opción 10: Guardar libros en archivo de disco duro (.txt o csv).
 # Nota: listar libros involucra: título, género, ISBN, editorial y autor(es)
 
-def vanesa(tarea):
-    print = 5+7
-    
+print("vacio")

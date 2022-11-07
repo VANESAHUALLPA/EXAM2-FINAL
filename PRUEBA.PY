@@ -1,5 +1,3 @@
-# POKEAPI - TRABAJO GRUPAL
-
 #La tarea gira en torno a la PokeAPI: https://pokeapi.co/docs/v2 utilizar la API v2 y el paquete requests de Python
 
 #Escribir un programa que tenga las siguientes opciones:
@@ -11,30 +9,40 @@
 #Opción 5: Listar pokemons por tipo. Se deben sugerir opciones a ingresar para interactuar.
 #Nota: listar pokemons involucra: nombre, habilidad y URL de la imagen
 
-
 # "***********************************************************************************************"
 
-import requests 
+import requests
 import json
 import os
+# link_pokiapi = requests.get("https://pokeapi.co/api/v2/pokemon/")
+# print(link_pokiapi)
+# print(type(link_pokiapi.status_code))
+# if(link_pokiapi.status_code==200):
+#     print("PAGINA OK")
+#     dato =link_pokiapi.json()
+os.system('clear')
 
-link_pokeapi = "https://pokeapi.co/api/v2/pokemon/"
-pokemones = ["clefairy","bulbasaur","wormadam","charmander"]
-
+link_pokiapi = 'https://pokeapi.co/api/v2/pokemon/'
+# pokemones = ['clefairy','bulbasaur','wormadam','charmander']
+pokemones = ['bulbasaur','squirtle','charmander','abra']
 def lista_pokemon(pokemones):
-    resp = requests.get("link_pokeapi" + pokemones)
-    dato = resp.json()
+    resp = requests.get(link_pokiapi + pokemones)
 
-    # print("dato")
-    # #peso = dato["weight"]
-    
-    # print(f"Nombre: {dato,["name"]}")
-    # print=(f"peso: {dato["weight"]}")
+    data = resp.json()
 
+    # print(f"Nombre: {data,['name']}")
+    # print(f"peso: {data['weight']}")
 
+    lista_habilidades = [habilidad['ability']['name'] for habilidad in data['abilities']]
+    print(f"Habilidades: {lista_habilidades} ")
 
+    dicc_estadistica = {stat['stat']['name']:stat['base_stat'] for stat in data['stats']}
+    print(f"Estadisticas: {dicc_estadistica} ")
 
-    #print = dato["weight"]
+    print("***************************" * 2)
+
+for pokemon in pokemones:
+    lista_pokemon(pokemon)
 
 
 
